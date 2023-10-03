@@ -10,7 +10,7 @@ _$PickerImpl _$$PickerImplFromJson(Map<String, dynamic> json) => _$PickerImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       phone: json['phone'] as String,
-      imageUrl: json['imageUrl'] as String,
+      imageUrl: json['imageUrl'] as String?,
       license: json['license'] as String,
     );
 

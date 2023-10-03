@@ -9,7 +9,7 @@ class Picker with _$Picker {
     required int id,
     required String name,
     required String phone,
-    required String imageUrl,
+    String? imageUrl,
     required String license,
   }) = _Picker;
 

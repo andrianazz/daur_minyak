@@ -23,7 +23,7 @@ mixin _$Picker {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   String get license => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $PickerCopyWith<$Res> {
       _$PickerCopyWithImpl<$Res, Picker>;
   @useResult
   $Res call(
-      {int id, String name, String phone, String imageUrl, String license});
+      {int id, String name, String phone, String? imageUrl, String license});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$PickerCopyWithImpl<$Res, $Val extends Picker>
     Object? id = null,
     Object? name = null,
     Object? phone = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? license = null,
   }) {
     return _then(_value.copyWith(
@@ -72,10 +72,10 @@ class _$PickerCopyWithImpl<$Res, $Val extends Picker>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       license: null == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$PickerImplCopyWith<$Res> implements $PickerCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id, String name, String phone, String imageUrl, String license});
+      {int id, String name, String phone, String? imageUrl, String license});
 }
 
 /// @nodoc
@@ -109,7 +109,7 @@ class __$$PickerImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? phone = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? license = null,
   }) {
     return _then(_$PickerImpl(
@@ -125,10 +125,10 @@ class __$$PickerImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       license: null == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ class _$PickerImpl implements _Picker {
       {required this.id,
       required this.name,
       required this.phone,
-      required this.imageUrl,
+      this.imageUrl,
       required this.license});
 
   factory _$PickerImpl.fromJson(Map<String, dynamic> json) =>
@@ -157,7 +157,7 @@ class _$PickerImpl implements _Picker {
   @override
   final String phone;
   @override
-  final String imageUrl;
+  final String? imageUrl;
   @override
   final String license;
 
@@ -203,7 +203,7 @@ abstract class _Picker implements Picker {
       {required final int id,
       required final String name,
       required final String phone,
-      required final String imageUrl,
+      final String? imageUrl,
       required final String license}) = _$PickerImpl;
 
   factory _Picker.fromJson(Map<String, dynamic> json) = _$PickerImpl.fromJson;
@@ -215,7 +215,7 @@ abstract class _Picker implements Picker {
   @override
   String get phone;
   @override
-  String get imageUrl;
+  String? get imageUrl;
   @override
   String get license;
   @override
