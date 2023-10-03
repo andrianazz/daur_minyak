@@ -6,7 +6,7 @@ part 'picker.g.dart';
 @freezed
 class Picker with _$Picker {
   const factory Picker({
-    required int id,
+    required String id,
     required String name,
     required String phone,
     String? imageUrl,

@@ -20,7 +20,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {int id, String name, String? imageUrl, double price, int? quantity});
+      {String id, String name, String? imageUrl, double price, int? quantity});
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id, String name, String? imageUrl, double price, int? quantity});
+      {String id, String name, String? imageUrl, double price, int? quantity});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$$ProductImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -151,7 +151,7 @@ class _$ProductImpl implements _Product {
       _$$ProductImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
@@ -201,7 +201,7 @@ class _$ProductImpl implements _Product {
 
 abstract class _Product implements Product {
   const factory _Product(
-      {required final int id,
+      {required final String id,
       required final String name,
       final String? imageUrl,
       required final double price,
@@ -210,7 +210,7 @@ abstract class _Product implements Product {
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override

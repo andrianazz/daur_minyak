@@ -20,7 +20,7 @@ Bank _$BankFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Bank {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $BankCopyWith<$Res> {
   factory $BankCopyWith(Bank value, $Res Function(Bank) then) =
       _$BankCopyWithImpl<$Res, Bank>;
   @useResult
-  $Res call({int id, String name, String? imageUrl, int balance});
+  $Res call({String id, String name, String? imageUrl, int balance});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$BankCopyWithImpl<$Res, $Val extends Bank>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -84,7 +84,7 @@ abstract class _$$BankImplCopyWith<$Res> implements $BankCopyWith<$Res> {
       __$$BankImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String? imageUrl, int balance});
+  $Res call({String id, String name, String? imageUrl, int balance});
 }
 
 /// @nodoc
@@ -106,7 +106,7 @@ class __$$BankImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -127,21 +127,19 @@ class __$$BankImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BankImpl implements _Bank {
   const _$BankImpl(
-      {required this.id,
-      required this.name,
-      this.imageUrl,
-      required this.balance});
+      {required this.id, required this.name, this.imageUrl, this.balance = 0});
 
   factory _$BankImpl.fromJson(Map<String, dynamic> json) =>
       _$$BankImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
   final String? imageUrl;
   @override
+  @JsonKey()
   final int balance;
 
   @override
@@ -181,15 +179,15 @@ class _$BankImpl implements _Bank {
 
 abstract class _Bank implements Bank {
   const factory _Bank(
-      {required final int id,
+      {required final String id,
       required final String name,
       final String? imageUrl,
-      required final int balance}) = _$BankImpl;
+      final int balance}) = _$BankImpl;
 
   factory _Bank.fromJson(Map<String, dynamic> json) = _$BankImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override

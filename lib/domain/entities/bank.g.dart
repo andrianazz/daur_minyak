@@ -7,10 +7,10 @@ part of 'bank.dart';
 // **************************************************************************
 
 _$BankImpl _$$BankImplFromJson(Map<String, dynamic> json) => _$BankImpl(
-      id: json['id'] as int,
+      id: json['id'] as String,
       name: json['name'] as String,
       imageUrl: json['imageUrl'] as String?,
-      balance: json['balance'] as int,
+      balance: json['balance'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$BankImplToJson(_$BankImpl instance) =>

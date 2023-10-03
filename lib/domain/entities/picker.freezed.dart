@@ -20,7 +20,7 @@ Picker _$PickerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Picker {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $PickerCopyWith<$Res> {
       _$PickerCopyWithImpl<$Res, Picker>;
   @useResult
   $Res call(
-      {int id, String name, String phone, String? imageUrl, String license});
+      {String id, String name, String phone, String? imageUrl, String license});
 }
 
 /// @nodoc
@@ -63,7 +63,7 @@ class _$PickerCopyWithImpl<$Res, $Val extends Picker>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -92,7 +92,7 @@ abstract class _$$PickerImplCopyWith<$Res> implements $PickerCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id, String name, String phone, String? imageUrl, String license});
+      {String id, String name, String phone, String? imageUrl, String license});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$$PickerImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -151,7 +151,7 @@ class _$PickerImpl implements _Picker {
       _$$PickerImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
@@ -200,7 +200,7 @@ class _$PickerImpl implements _Picker {
 
 abstract class _Picker implements Picker {
   const factory _Picker(
-      {required final int id,
+      {required final String id,
       required final String name,
       required final String phone,
       final String? imageUrl,
@@ -209,7 +209,7 @@ abstract class _Picker implements Picker {
   factory _Picker.fromJson(Map<String, dynamic> json) = _$PickerImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get name;
   @override

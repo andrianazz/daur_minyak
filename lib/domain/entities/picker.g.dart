@@ -7,7 +7,7 @@ part of 'picker.dart';
 // **************************************************************************
 
 _$PickerImpl _$$PickerImplFromJson(Map<String, dynamic> json) => _$PickerImpl(
-      id: json['id'] as int,
+      id: json['id'] as String,
       name: json['name'] as String,
       phone: json['phone'] as String,
       imageUrl: json['imageUrl'] as String?,
