@@ -1,3 +1,10 @@
+import 'package:daur_minyak/data/repositories/dummy/dummy_authentication.dart';
+import 'package:daur_minyak/data/repositories/dummy/dummy_user_repository.dart';
+import 'package:daur_minyak/data/repositories/firebase/firebase_authentication.dart';
+import 'package:daur_minyak/domain/entities/user.dart';
+import 'package:daur_minyak/domain/repositories/authentication_repository.dart';
+import 'package:daur_minyak/domain/repositories/user_repository.dart';
+import 'package:daur_minyak/domain/usecases/login/login.dart';
 import 'package:daur_minyak/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +41,48 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flutter Demo Home Page'),
       ),
-      body: const Center(
-        child: Text('Hello World'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () async {
+            Login login = Login(
+              authRepository: DummyAuthentication(),
+              userRepository: DummyUserRepository(),
+            );
+
+            await login(LoginParams(
+                    email: "andrianwahyu41@gmail.com", password: "12345678"))
+                .then((result) {
+              if (result.isSuccess) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SecondPage(user: result.resultValue!),
+                  ),
+                );
+              } else {
+                print(result.resultMessage);
+              }
+            });
+          },
+          child: const Text('Login Test'),
+        ),
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  final User user;
+  const SecondPage({super.key, required this.user});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Page'),
+      ),
+      body: Center(
+        child: Text(user.toString()),
       ),
     );
   }

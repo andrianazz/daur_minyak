@@ -7,8 +7,8 @@ import 'package:firebase_core/firebase_core.dart';
 class FirebaseAuthentication implements AuthenticationRepository {
   final fireAuth.FirebaseAuth _firebaseAuth;
 
-  FirebaseAuthentication({required fireAuth.FirebaseAuth firebaseAuth})
-      : _firebaseAuth = firebaseAuth;
+  FirebaseAuthentication({fireAuth.FirebaseAuth? firebaseAuth})
+      : _firebaseAuth = firebaseAuth ?? fireAuth.FirebaseAuth.instance;
   @override
   String? getLoggedInUserId() => _firebaseAuth.currentUser?.uid;
 
