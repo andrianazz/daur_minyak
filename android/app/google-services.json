@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "551266120223",
+    "project_id": "daur-minyak",
+    "storage_bucket": "daur-minyak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551266120223:android:5ad569bc8628dbb0cc9b2a",
+        "android_client_info": {
+          "package_name": "com.example.daur_minyak"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyt_o9CXM_St4ph0lPkXZXqLZuEXZkH70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
