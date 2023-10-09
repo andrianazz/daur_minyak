@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:daur_minyak/presentation/misc/constants.dart';
 import 'package:daur_minyak/presentation/misc/methods.dart';
