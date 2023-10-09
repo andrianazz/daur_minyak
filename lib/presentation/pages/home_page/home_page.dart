@@ -1,3 +1,4 @@
+import 'package:daur_minyak/presentation/extensions/build_context_extensions.dart';
 import 'package:daur_minyak/presentation/providers/router/router_provider.dart';
 import 'package:daur_minyak/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       if (previous != null && next is AsyncData && next.value == null) {
         ref.read(routerProvider).goNamed("login");
       } else if (next is AsyncError) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(next.error.toString()),
-        ));
+        context.showSnackBar(next.error.toString());
       }
     });
     return Scaffold(

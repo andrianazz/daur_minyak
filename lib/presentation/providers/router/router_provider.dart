@@ -1,5 +1,6 @@
 import 'package:daur_minyak/presentation/pages/home_page/home_page.dart';
 import 'package:daur_minyak/presentation/pages/login_page/login_page.dart';
+import 'package:daur_minyak/presentation/pages/register_page/register_page.dart';
 import 'package:daur_minyak/presentation/pages/splash_page/splash_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -21,6 +22,11 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
       GoRoute(
         path: "/splash",
         name: "splash",
-        builder: (context, state) => SplashPage(),
+        builder: (context, state) => const SplashPage(),
+      ),
+      GoRoute(
+        path: "/register",
+        name: "register",
+        builder: (context, state) => const RegisterPage(),
       ),
     ], initialLocation: "/splash", debugLogDiagnostics: false);

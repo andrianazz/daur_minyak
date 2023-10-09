@@ -20,9 +20,26 @@ class FirebaseUserRepository implements UserRepository {
       {required String uid,
       required String email,
       required String name,
-      required String phone}) {
-    // TODO: implement createUser
-    throw UnimplementedError();
+      required String phone}) async {
+    try {
+      DocumentReference<Map<String, dynamic>> documentReference =
+          _firebaseFirestore.doc('users/$uid');
+
+      Map<String, dynamic> data = {
+        'uid': uid,
+        'email': email,
+        'name': name,
+        'phone': phone,
+        'balance': 0,
+        'verified': false,
+      };
+
+      await documentReference.set(data);
+
+      return Result.success(User.fromJson(data));
+    } on FirebaseException catch (e) {
+      return Result.failed(e.message ?? 'Create user failed');
+    }
   }
 
   @override

@@ -3,9 +3,12 @@ import 'package:daur_minyak/domain/entities/user.dart';
 import 'package:daur_minyak/domain/usecases/get_logged_in_user/get_logged_in_user.dart';
 import 'package:daur_minyak/domain/usecases/login/login.dart';
 import 'package:daur_minyak/domain/usecases/logout/logout.dart';
+import 'package:daur_minyak/domain/usecases/register/register.dart';
+import 'package:daur_minyak/domain/usecases/register/register_params.dart';
 import 'package:daur_minyak/presentation/providers/usecases/get_logged_in_user_provider.dart';
 import 'package:daur_minyak/presentation/providers/usecases/login_provider.dart';
 import 'package:daur_minyak/presentation/providers/usecases/logout_provider.dart';
+import 'package:daur_minyak/presentation/providers/usecases/register_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -24,6 +27,45 @@ class UserData extends _$UserData {
 
       case Failed(message: _):
         return null;
+    }
+  }
+
+  Future<void> register(
+      {required String email,
+      required String password,
+      required String passwordConfirmation,
+      required String name,
+      required String phoneNumber,
+      required bool isChecked}) async {
+    state = const AsyncLoading();
+
+    Register register = ref.read(registerProvider);
+
+    if (isChecked == false) {
+      state = AsyncError(
+          FlutterError("Anda harus menyetujui syarat dan ketentuan"),
+          StackTrace.current);
+      state = const AsyncData(null);
+      return;
+    }
+
+    var result = await register(
+      RegisterParams(
+        email: email,
+        password: password,
+        name: name,
+        phone: phoneNumber,
+        passwordConfirmation: passwordConfirmation,
+      ),
+    );
+
+    switch (result) {
+      case Success(value: final user):
+        state = AsyncData(user);
+
+      case Failed(message: final message):
+        state = AsyncError(FlutterError(message), StackTrace.current);
+        state = const AsyncData(null);
     }
   }
 
