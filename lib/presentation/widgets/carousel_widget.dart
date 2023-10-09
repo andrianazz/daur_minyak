@@ -17,13 +17,13 @@ class CarouselWidget extends StatefulWidget {
 class _CarouselWidgetState extends State<CarouselWidget> {
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider(
-      items: widget.items.map((i) {
-        return Builder(
-          builder: (BuildContext context) {
-            return Column(
-              children: [
-                Container(
+    return Column(
+      children: [
+        CarouselSlider(
+          items: widget.items.map((i) {
+            return Builder(
+              builder: (BuildContext context) {
+                return Container(
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.symmetric(horizontal: 23.w),
                   child: Column(
@@ -62,55 +62,52 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                       ),
                     ],
                   ),
-                ),
-                verticalSpace(40.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: widget.items.asMap().entries.map((entry) {
-                    return GestureDetector(
-                      child: Container(
-                        width: widget.current == entry.key ? 24.w : 10.w,
-                        height: 10.h,
-                        margin: EdgeInsets.symmetric(
-                            vertical: 8.h, horizontal: 4.w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.r),
-                          color:
-                              (Theme.of(context).brightness == Brightness.dark
-                                      ? Colors.white
-                                      : primaryColor)
-                                  .withOpacity(
-                                      widget.current == entry.key ? 0.9 : 0.4),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                )
-              ],
+                );
+              },
             );
-          },
-        );
-      }).toList(),
-      options: CarouselOptions(
-        height: 430.h,
-        aspectRatio: 16 / 9,
-        viewportFraction: 1,
-        initialPage: 0,
-        enableInfiniteScroll: true,
-        reverse: false,
-        autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 5),
-        autoPlayAnimationDuration: const Duration(milliseconds: 800),
-        autoPlayCurve: Curves.fastOutSlowIn,
-        enlargeCenterPage: true,
-        onPageChanged: (index, reason) {
-          setState(() {
-            widget.current = index;
-          });
-        },
-        enlargeFactor: 0.3,
-        scrollDirection: Axis.horizontal,
-      ),
+          }).toList(),
+          options: CarouselOptions(
+            height: 350.h,
+            aspectRatio: 16 / 9,
+            viewportFraction: 1,
+            initialPage: 0,
+            enableInfiniteScroll: true,
+            reverse: false,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 5),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enlargeCenterPage: true,
+            onPageChanged: (index, reason) {
+              setState(() {
+                widget.current = index;
+              });
+            },
+            enlargeFactor: 0.3,
+            scrollDirection: Axis.horizontal,
+          ),
+        ),
+        verticalSpace(20.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: widget.items.asMap().entries.map((entry) {
+            return GestureDetector(
+              child: Container(
+                width: widget.current == entry.key ? 24.w : 10.w,
+                height: 10.h,
+                margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 4.w),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.r),
+                  color: (Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : primaryColor)
+                      .withOpacity(widget.current == entry.key ? 0.9 : 0.4),
+                ),
+              ),
+            );
+          }).toList(),
+        )
+      ],
     );
   }
 }
