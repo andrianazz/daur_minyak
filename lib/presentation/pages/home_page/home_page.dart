@@ -1,5 +1,6 @@
 import 'package:daur_minyak/presentation/extensions/build_context_extensions.dart';
 import 'package:daur_minyak/presentation/misc/constants.dart';
+import 'package:daur_minyak/presentation/pages/home_page/akun_page/akun_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/beranda_page.dart/beranda_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/pesan_masuk_page/pesan_masuk_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/pesanan_page/pesanan_page.dart';
@@ -44,7 +45,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           const PesananPage(),
           Container(),
           const PesanMasukPage(),
-          Container(),
+          const AkunPage(),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
