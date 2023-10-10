@@ -22,6 +22,7 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
           .toList(),
       image: json['image'] as Map<String, dynamic>? ?? const {},
       verification: json['verification'] as bool? ?? false,
+      balance: json['balance'] ?? 0,
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'address': instance.address,
       'image': instance.image,
       'verification': instance.verification,
+      'balance': instance.balance,
     };

@@ -3,6 +3,7 @@ import 'package:daur_minyak/presentation/misc/constants.dart';
 import 'package:daur_minyak/presentation/providers/router/router_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,6 +23,9 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: primaryColor));
+
     return ScreenUtilInit(
       designSize: const Size(360, 640),
       splitScreenMode: true,

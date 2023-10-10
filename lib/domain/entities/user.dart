@@ -18,6 +18,7 @@ abstract class User with _$User {
     List<Address>? address,
     @Default({}) Map<String, dynamic> image,
     @Default(false) bool verification,
+    @Default(0) balance,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

@@ -30,6 +30,7 @@ mixin _$User {
   List<Address>? get address => throw _privateConstructorUsedError;
   Map<String, dynamic> get image => throw _privateConstructorUsedError;
   bool get verification => throw _privateConstructorUsedError;
+  dynamic get balance => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +52,8 @@ abstract class $UserCopyWith<$Res> {
       List<Bank>? banks,
       List<Address>? address,
       Map<String, dynamic> image,
-      bool verification});
+      bool verification,
+      dynamic balance});
 }
 
 /// @nodoc
@@ -77,6 +79,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? address = freezed,
     Object? image = null,
     Object? verification = null,
+    Object? balance = freezed,
   }) {
     return _then(_value.copyWith(
       uid: null == uid
@@ -119,6 +122,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
               as bool,
+      balance: freezed == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -140,7 +147,8 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       List<Bank>? banks,
       List<Address>? address,
       Map<String, dynamic> image,
-      bool verification});
+      bool verification,
+      dynamic balance});
 }
 
 /// @nodoc
@@ -163,6 +171,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? address = freezed,
     Object? image = null,
     Object? verification = null,
+    Object? balance = freezed,
   }) {
     return _then(_$UserImpl(
       uid: null == uid
@@ -205,6 +214,7 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.verification
           : verification // ignore: cast_nullable_to_non_nullable
               as bool,
+      balance: freezed == balance ? _value.balance! : balance,
     ));
   }
 }
@@ -222,7 +232,8 @@ class _$UserImpl implements _User {
       final List<Bank>? banks = const [],
       final List<Address>? address,
       final Map<String, dynamic> image = const {},
-      this.verification = false})
+      this.verification = false,
+      this.balance = 0})
       : _banks = banks,
         _address = address,
         _image = image;
@@ -275,10 +286,13 @@ class _$UserImpl implements _User {
   @override
   @JsonKey()
   final bool verification;
+  @override
+  @JsonKey()
+  final dynamic balance;
 
   @override
   String toString() {
-    return 'User(uid: $uid, name: $name, email: $email, phone: $phone, pin: $pin, imageUrl: $imageUrl, banks: $banks, address: $address, image: $image, verification: $verification)';
+    return 'User(uid: $uid, name: $name, email: $email, phone: $phone, pin: $pin, imageUrl: $imageUrl, banks: $banks, address: $address, image: $image, verification: $verification, balance: $balance)';
   }
 
   @override
@@ -297,7 +311,8 @@ class _$UserImpl implements _User {
             const DeepCollectionEquality().equals(other._address, _address) &&
             const DeepCollectionEquality().equals(other._image, _image) &&
             (identical(other.verification, verification) ||
-                other.verification == verification));
+                other.verification == verification) &&
+            const DeepCollectionEquality().equals(other.balance, balance));
   }
 
   @JsonKey(ignore: true)
@@ -313,7 +328,8 @@ class _$UserImpl implements _User {
       const DeepCollectionEquality().hash(_banks),
       const DeepCollectionEquality().hash(_address),
       const DeepCollectionEquality().hash(_image),
-      verification);
+      verification,
+      const DeepCollectionEquality().hash(balance));
 
   @JsonKey(ignore: true)
   @override
@@ -340,7 +356,8 @@ abstract class _User implements User {
       final List<Bank>? banks,
       final List<Address>? address,
       final Map<String, dynamic> image,
-      final bool verification}) = _$UserImpl;
+      final bool verification,
+      final dynamic balance}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -364,6 +381,8 @@ abstract class _User implements User {
   Map<String, dynamic> get image;
   @override
   bool get verification;
+  @override
+  dynamic get balance;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
