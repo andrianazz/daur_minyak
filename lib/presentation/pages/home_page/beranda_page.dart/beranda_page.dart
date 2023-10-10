@@ -201,7 +201,7 @@ class _BerandaPageState extends ConsumerState<BerandaPage> {
                 ),
                 margin: EdgeInsets.only(
                   left: index == 0 ? 24.w : 0,
-                  right: index == 4 ? 24.w : 0,
+                  right: index == itemsTutorial.length - 1 ? 24.w : 0,
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5.r),

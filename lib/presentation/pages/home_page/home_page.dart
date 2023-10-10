@@ -1,6 +1,7 @@
 import 'package:daur_minyak/presentation/extensions/build_context_extensions.dart';
 import 'package:daur_minyak/presentation/misc/constants.dart';
 import 'package:daur_minyak/presentation/pages/home_page/beranda_page.dart/beranda_page.dart';
+import 'package:daur_minyak/presentation/pages/home_page/pesanan_page/pesanan_page.dart';
 import 'package:daur_minyak/presentation/providers/router/router_provider.dart';
 import 'package:daur_minyak/presentation/providers/user_data/user_data_provider.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _HomePageState extends ConsumerState<HomePage> {
         },
         children: [
           const BerandaPage(),
-          Container(),
+          const PesananPage(),
           Container(),
           Container(),
           Container(),
