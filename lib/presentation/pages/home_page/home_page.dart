@@ -71,6 +71,10 @@ class _HomePageState extends ConsumerState<HomePage> {
         unselectedFontSize: 10.sp,
         currentIndex: _selectedIndex,
         onTap: (index) {
+          if (index == 2) {
+            return;
+          }
+
           setState(() {
             _selectedIndex = index;
             _pageController.jumpToPage(index);
