@@ -35,14 +35,20 @@ class _SplashPageState extends ConsumerState<SplashPage> {
       body: SafeArea(
         child: ListView(
           children: [
-            Container(
-              width: 50.w,
-              height: 50.h,
-              decoration: const BoxDecoration(
-                color: Colors.red,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: 50.w,
+                height: 50.h,
+                margin: EdgeInsets.symmetric(horizontal: 23.w),
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/daur_minyak_logo.png"),
+                  ),
+                ),
               ),
             ),
-            verticalSpace(50.h),
+            verticalSpace(30.h),
             CarouselWidget(items: items, current: _current),
             verticalSpace(20.h),
             switch (ref.watch(userDataProvider)) {
