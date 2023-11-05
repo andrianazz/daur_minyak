@@ -29,7 +29,30 @@ class DaurMinyakPage extends StatelessWidget {
             titleDaurMinyak(title: "Jenis Minyak Bekas"),
             verticalSpace(38.h),
             jenisMinyak(),
-            verticalSpace(136.h),
+            verticalSpace(40.h),
+            Column(
+              children: [
+                Stack(
+                  children: [
+                    Card(
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.r),
+                      ),
+                      child: Container(
+                        width: double.infinity,
+                        height: 32.h,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.r),
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+            verticalSpace(25.h),
             titleDaurMinyak(title: "Pendapatan Kamu"),
             verticalSpace(10.h),
             cardPendapatan(),
