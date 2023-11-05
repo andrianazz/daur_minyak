@@ -1,3 +1,4 @@
+import 'package:daur_minyak/presentation/pages/daur_minyak/daur_minyak_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/home_page.dart';
 import 'package:daur_minyak/presentation/pages/login_page/login_page.dart';
 import 'package:daur_minyak/presentation/pages/register_page/register_page.dart';
@@ -29,4 +30,9 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
         name: "register",
         builder: (context, state) => const RegisterPage(),
       ),
+      GoRoute(
+        path: "/daur_minyak",
+        name: "daur_minyak",
+        builder: (context, state) => const DaurMinyakPage(),
+      )
     ], initialLocation: "/splash", debugLogDiagnostics: false);

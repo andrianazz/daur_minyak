@@ -1,5 +1,6 @@
 import 'package:daur_minyak/presentation/extensions/build_context_extensions.dart';
 import 'package:daur_minyak/presentation/misc/constants.dart';
+import 'package:daur_minyak/presentation/pages/daur_minyak/daur_minyak_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/akun_page/akun_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/beranda_page.dart/beranda_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/pesan_masuk_page/pesan_masuk_page.dart';
@@ -41,12 +42,12 @@ class _HomePageState extends ConsumerState<HomePage> {
             _pageController.jumpToPage(value);
           });
         },
-        children: [
-          const BerandaPage(),
-          const PesananPage(),
-          Container(),
-          const PesanMasukPage(),
-          const AkunPage(),
+        children: const [
+          BerandaPage(),
+          PesananPage(),
+          SizedBox(),
+          PesanMasukPage(),
+          AkunPage(),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -58,17 +59,21 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
         ),
         onPressed: () {
-          if (ref.read(userDataProvider).asData!.value!.verification == false) {
-            showDialog(
-              context: context,
-              builder: (context) => DialogWidget(
-                text:
-                    "Akun belum terverifikasi,\nsilahkan lengkapi data diri anda",
-                textButton1: "Lengkapi Data Diri",
-                onPressedButton1: () {},
-              ),
-            );
-          }
+          // bool notVerified =
+          //     ref.read(userDataProvider).asData!.value!.verification == false;
+          // if (notVerified) {
+          //   showDialog(
+          //     context: context,
+          //     builder: (context) => DialogWidget(
+          //       text:
+          //           "Akun belum terverifikasi,\nsilahkan lengkapi data diri anda",
+          //       textButton1: "Lengkapi Data Diri",
+          //       onPressedButton1: () {},
+          //     ),
+          //   );
+          // }
+
+          ref.read(routerProvider).pushNamed("daur_minyak");
         },
         child: Image.asset(
           "assets/icon_process.png",
@@ -95,23 +100,24 @@ class _HomePageState extends ConsumerState<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.home_rounded),
             label: "Beranda",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.description_outlined),
+            icon: Icon(Icons.description_rounded),
             label: "Pesanan",
           ),
           BottomNavigationBarItem(
-            icon: Visibility(visible: false, child: Icon(Icons.history)),
+            icon:
+                Visibility(visible: false, child: Icon(Icons.history_rounded)),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.chat_outlined),
+            icon: Icon(Icons.chat_rounded),
             label: "Pesan Masuk",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(Icons.person_rounded),
             label: "Akun",
           ),
         ],
