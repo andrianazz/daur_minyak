@@ -4,6 +4,7 @@ import 'package:daur_minyak/presentation/misc/constants.dart';
 import 'package:daur_minyak/presentation/misc/methods.dart';
 import 'package:daur_minyak/presentation/providers/user_data/user_data_provider.dart';
 import 'package:daur_minyak/presentation/widgets/carousel_small_widget.dart';
+import 'package:daur_minyak/presentation/widgets/tutroial_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -185,57 +186,7 @@ class _BerandaPageState extends ConsumerState<BerandaPage> {
         verticalSpace(10.h),
         CarouselSmallWidget(items: itemsInfo, current: _currentCarousel),
         verticalSpace(20.h),
-        SizedBox(
-          height: 120.h,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: itemsTutorial.length,
-            itemBuilder: (context, index) {
-              return Container(
-                width: 100.w,
-                height: 120.h,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 5.w,
-                  vertical: 5.h,
-                ),
-                margin: EdgeInsets.only(
-                  left: index == 0 ? 24.w : 0,
-                  right: index == itemsTutorial.length - 1 ? 24.w : 0,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.r),
-                  color: primaryColor,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    verticalSpace(5.h),
-                    Text(
-                      itemsTutorial[index]['title'],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 8,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 70.h,
-                      child: Image.asset(
-                        "assets/icon_duitin.png",
-                        fit: BoxFit.cover,
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return horizontalSpace(6.w);
-            },
-          ),
-        ),
+        TutorialListWidget(items: itemsTutorial),
       ],
     );
   }

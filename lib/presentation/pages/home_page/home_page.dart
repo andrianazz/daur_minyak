@@ -6,6 +6,7 @@ import 'package:daur_minyak/presentation/pages/home_page/pesan_masuk_page/pesan_
 import 'package:daur_minyak/presentation/pages/home_page/pesanan_page/pesanan_page.dart';
 import 'package:daur_minyak/presentation/providers/router/router_provider.dart';
 import 'package:daur_minyak/presentation/providers/user_data/user_data_provider.dart';
+import 'package:daur_minyak/presentation/widgets/dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,7 +58,17 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
         ),
         onPressed: () {
-          print("DAUR MINYAK");
+          if (ref.read(userDataProvider).asData!.value!.verification == false) {
+            showDialog(
+              context: context,
+              builder: (context) => DialogWidget(
+                text:
+                    "Akun belum terverifikasi,\nsilahkan lengkapi data diri anda",
+                textButton1: "Lengkapi Data Diri",
+                onPressedButton1: () {},
+              ),
+            );
+          }
         },
         child: Image.asset(
           "assets/icon_process.png",
