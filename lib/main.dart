@@ -23,8 +23,10 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: primaryColor));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.grey, // navigation bar color
+      statusBarColor: primaryColor, // status bar color
+    ));
 
     return ScreenUtilInit(
       designSize: const Size(360, 640),
