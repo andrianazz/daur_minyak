@@ -1,4 +1,7 @@
 import 'package:daur_minyak/presentation/pages/daur_minyak/daur_minyak_page.dart';
+import 'package:daur_minyak/presentation/pages/daur_minyak/views/alamat_daur_minyak_page.dart';
+import 'package:daur_minyak/presentation/pages/daur_minyak/views/waiting_daur_minyak_page.dart';
+import 'package:daur_minyak/presentation/pages/daur_minyak/views/waktu_daur_minyak_page.dart';
 import 'package:daur_minyak/presentation/pages/home_page/home_page.dart';
 import 'package:daur_minyak/presentation/pages/login_page/login_page.dart';
 import 'package:daur_minyak/presentation/pages/register_page/register_page.dart';
@@ -34,5 +37,20 @@ Raw<GoRouter> router(RouterRef ref) => GoRouter(routes: [
         path: "/daur_minyak",
         name: "daur_minyak",
         builder: (context, state) => const DaurMinyakPage(),
+      ),
+      GoRoute(
+        path: "/alamat_daur_minyak",
+        name: "alamat_daur_minyak",
+        builder: (context, state) => const AlamatDaurMinyakPage(),
+      ),
+      GoRoute(
+        path: "/waktu_daur_minyak",
+        name: "waktu_daur_minyak",
+        builder: (context, state) => const WaktuDaurMinyakPage(),
+      ),
+      GoRoute(
+        path: "/waiting_daur_minyak",
+        name: "waiting_daur_minyak",
+        builder: (context, state) => const WaitingDaurMinyakPage(),
       )
     ], initialLocation: "/splash", debugLogDiagnostics: false);

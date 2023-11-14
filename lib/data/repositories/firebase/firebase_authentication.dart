@@ -32,7 +32,12 @@ class FirebaseAuthentication implements AuthenticationRepository {
   Future<Result<void>> logout() async {
     try {
       await _firebaseAuth.signOut();
-      return const Result.success(null);
+
+      if (_firebaseAuth.currentUser == null) {
+        return const Result.success(null);
+      } else {
+        return const Result.failed('Logout failed');
+      }
     } on FirebaseException catch (e) {
       return Result.failed(e.message ?? 'Logout failed');
     }

@@ -1,80 +1,93 @@
 import 'package:daur_minyak/presentation/misc/methods.dart';
+import 'package:daur_minyak/presentation/pages/daur_minyak/models/daur_minyak_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Widget jenisMinyak() {
-  Map<String, dynamic> items = {
-    "Minyak Makan": "assets/icon-minyak.png",
-    "Oli Bekas": "assets/icon-oli.png",
-  };
+Widget jenisMinyak({
+  required List<DaurMinyakModel> items,
+  bool isSelected = false,
+  required Function onTap,
+}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Container(
-          width: 80.w,
-          height: 80.h,
-          decoration: BoxDecoration(
+    children: items
+        .map(
+          (e) => Container(
+            margin: EdgeInsets.only(
+                right: items.length - 1 == items.lastIndexOf(e) ? 0 : 24.w),
+            child: GestureDetector(
+              onTap: () => onTap,
+              child: cardJenisMinyak(
+                title: e.title,
+                imagePath: e.image,
+                isSelected: e.isSelected,
+                onTap: () => onTap,
+              ),
+            ),
+          ),
+        )
+        .toList(),
+  );
+}
+
+Widget cardJenisMinyak({
+  required String title,
+  required String imagePath,
+  bool isSelected = false,
+  required Function onTap,
+}) {
+  return GestureDetector(
+    onTap: () => onTap,
+    child: Stack(
+      children: [
+        Card(
+          elevation: 3,
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            color: const Color.fromRGBO(255, 255, 255, 1),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                items.values.elementAt(0),
-                width: 40.w,
-                height: 40.h,
+          child: Container(
+            width: 80.w,
+            height: 80.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: const Color.fromRGBO(255, 255, 255, 1),
+              border: Border.all(
+                color: isSelected == true ? Colors.green : Colors.transparent,
+                width: 2,
               ),
-              verticalSpace(7.h),
-              Text(
-                items.keys.elementAt(0),
-                style: TextStyle(
-                  fontSize: 8.sp,
-                  fontWeight: FontWeight.w500,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  imagePath,
+                  width: 40.w,
+                  height: 40.h,
                 ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      horizontalSpace(24.w),
-      Card(
-        elevation: 3,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Container(
-          width: 80.w,
-          height: 80.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color.fromRGBO(255, 255, 255, 1),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                items.values.elementAt(1),
-                width: 40.w,
-                height: 40.h,
-              ),
-              verticalSpace(7.h),
-              Text(
-                items.keys.elementAt(1),
-                style: TextStyle(
-                  fontSize: 8.sp,
-                  fontWeight: FontWeight.w500,
+                verticalSpace(7.h),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 8.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      )
-    ],
+        isSelected == true
+            ? Positioned(
+                top: 0,
+                right: 0,
+                child: Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                  size: 20.sp,
+                ),
+              )
+            : const SizedBox(),
+      ],
+    ),
   );
 }

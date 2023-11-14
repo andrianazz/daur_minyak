@@ -16,11 +16,14 @@ Widget cardPendapatan() => Card(
           color: const Color.fromRGBO(255, 255, 255, 1),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             textPendapatan("Total Harga", 0),
             textPendapatan("Biaya Admin 20%", 0),
-            const Divider(),
+            const Divider(
+              height: 1,
+              color: Color.fromRGBO(0, 0, 0, 0.2),
+            ),
             textPendapatan("Estimasi Pendapatan", 0),
           ],
         ),

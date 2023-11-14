@@ -1,7 +1,6 @@
 import 'package:daur_minyak/presentation/misc/constants.dart';
 import 'package:daur_minyak/presentation/misc/methods.dart';
 import 'package:daur_minyak/presentation/providers/user_data/user_data_provider.dart';
-import 'package:daur_minyak/presentation/widgets/button_full_widget.dart';
 import 'package:daur_minyak/presentation/widgets/list_tile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -93,14 +92,15 @@ class AkunPage extends ConsumerWidget {
                                   height: 10.h,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: ref
-                                                .read(userDataProvider)
-                                                .asData!
-                                                .value!
-                                                .verification ==
-                                            false
-                                        ? Colors.red
-                                        : Colors.transparent,
+                                    color: ref.watch(userDataProvider).when(
+                                          data: (data) =>
+                                              data?.verification == false
+                                                  ? Colors.red
+                                                  : Colors.transparent,
+                                          error: (error, stackTrace) =>
+                                              Colors.transparent,
+                                          loading: () => Colors.transparent,
+                                        ),
                                   ),
                                 ),
                               ),
@@ -138,27 +138,27 @@ class AkunPage extends ConsumerWidget {
                             Icon(
                               Icons.shield_moon_outlined,
                               size: 10.w,
-                              color: ref
-                                          .read(userDataProvider)
-                                          .asData!
-                                          .value!
-                                          .verification ==
-                                      true
-                                  ? Colors.green
-                                  : Colors.red,
+                              color: ref.watch(userDataProvider).when(
+                                    data: (data) => data?.verification == true
+                                        ? Colors.green
+                                        : Colors.red,
+                                    error: (error, stackTrace) =>
+                                        Colors.transparent,
+                                    loading: () => Colors.transparent,
+                                  ),
                             ),
                             Text(
                               "Belum Terverifikasi",
                               style: TextStyle(
                                 fontSize: 8.sp,
-                                color: ref
-                                            .read(userDataProvider)
-                                            .asData!
-                                            .value!
-                                            .verification ==
-                                        true
-                                    ? Colors.green
-                                    : Colors.red,
+                                color: ref.watch(userDataProvider).when(
+                                      data: (data) => data?.verification == true
+                                          ? Colors.green
+                                          : Colors.red,
+                                      error: (error, stackTrace) =>
+                                          Colors.transparent,
+                                      loading: () => Colors.transparent,
+                                    ),
                               ),
                             )
                           ],
