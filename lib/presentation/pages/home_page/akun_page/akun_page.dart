@@ -44,7 +44,6 @@ class AkunPage extends ConsumerWidget {
                   ),
                   verticalSpace(50.h),
                   Container(
-                    height: 150.h,
                     width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: 20.w),
                     padding:
