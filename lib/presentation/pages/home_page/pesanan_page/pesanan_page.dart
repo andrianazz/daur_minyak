@@ -1,5 +1,6 @@
 import 'package:daur_minyak/presentation/misc/constants.dart';
-import 'package:daur_minyak/presentation/misc/methods.dart';
+import 'package:daur_minyak/presentation/pages/home_page/pesanan_page/widget/on_progress_page.dart';
+import 'package:daur_minyak/presentation/pages/home_page/pesanan_page/widget/on_success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,6 +18,7 @@ class _PesananPageState extends State<PesananPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xcfff5f5f5),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +113,7 @@ class _PesananPageState extends State<PesananPage> {
                             "Selesai",
                             style: TextStyle(
                               fontSize: 10.sp,
-                              color: _selectedPesanan == 0
+                              color: _selectedPesanan == 1
                                   ? Colors.black
                                   : Colors.grey,
                             ),
@@ -142,54 +144,6 @@ class _PesananPageState extends State<PesananPage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class OnProgressPage extends StatelessWidget {
-  const OnProgressPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        verticalSpace(40.h),
-        SizedBox(
-          height: 170.h,
-          child: Image.asset(
-            "assets/icon_purchase_order.png",
-            fit: BoxFit.cover,
-          ),
-        ),
-        Text(
-          "Ayo mulai pesan daurminyak hari ini!",
-          style: TextStyle(fontSize: 14.sp, color: Colors.grey),
-        ),
-      ],
-    );
-  }
-}
-
-class OnSuccessPage extends StatelessWidget {
-  const OnSuccessPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        verticalSpace(40.h),
-        SizedBox(
-          height: 170.h,
-          child: Image.asset(
-            "assets/icon_purchase_order.png",
-            fit: BoxFit.cover,
-          ),
-        ),
-        Text(
-          "Belum ada pesanan daurminyak yang selesai",
-          style: TextStyle(fontSize: 14.sp, color: Colors.grey),
-        ),
-      ],
     );
   }
 }
